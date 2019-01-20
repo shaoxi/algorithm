@@ -15,18 +15,18 @@ public class InsertionSort {
         if(a==null){
             return;
         }
-        for(int i=0; i<a.length-1; i++){
-            //插入已排好序数组
-            int j = i +1;
-            int v = a[j];
-            for(; j>0; j--){
-                if(a[j-1]>v){
-                    a[j] = a[j-1];
+        for(int i=1; i<a.length; i++){
+            //将a[i]插入已排序数组a[i-1]
+            int key = a[i];
+            int j = i - 1;
+            for(; j>=0;j--){
+                if(a[j]>key){
+                    a[j+1] = a[j];
                 }else{
                     break;
                 }
             }
-            a[j] = v;
+            a[j+1] = key;
         }
     }
 }
