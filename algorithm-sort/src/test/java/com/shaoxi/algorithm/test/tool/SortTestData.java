@@ -6,7 +6,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * 排序数据生成
+ * 排序数据生成器
+ *
+ * @author shaoxi.ycw
+ * @since 2019-01-19
  */
 public class SortTestData {
 
@@ -61,7 +64,4 @@ public class SortTestData {
             }
         }
     }
-
-
-
 }

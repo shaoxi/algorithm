@@ -1,5 +1,11 @@
 package com.shaoxi.algorithm.test.tool;
 
+/**
+ * 比较
+ *
+ * @author shaoxi.ycw
+ * @since 2019-01-19
+ */
 public class ValueCompare {
     /**
      * 比较两个数组是否相等
