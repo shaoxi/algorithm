@@ -50,7 +50,7 @@ public class SortPerformanceTest extends BaseSortTest {
 
     private void sort(List<SortResult> resultList, String name, int[] a, Function<int[], Void> sortFunc){
         int[] _a = ArraysTool.copy(a, 0, a.length);
-        System.out.println(ZonedDateTime.now() + name + " start");
+        System.out.println(ZonedDateTime.now() + name + " low");
 
         long useTime = sort(_a, sortFunc, false);
 
