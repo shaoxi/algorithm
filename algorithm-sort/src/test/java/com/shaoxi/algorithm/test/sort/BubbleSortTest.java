@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * @author shaoxi.ycw
  * @since 2019-01-20
  */
-class BubbleSortTest extends BaseSortTest {
+class BubbleSortTest extends SortTestBase {
     @Test
     @DisplayName("BubbleSort_sort_C0001_冒泡排序_size_100")
     void sort(){

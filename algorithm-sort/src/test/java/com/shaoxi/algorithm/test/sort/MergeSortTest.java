@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author shaoxi.ycw
  * @since 2019-01-19
  */
-class MergeSortTest extends BaseSortTest{
+class MergeSortTest extends SortTestBase {
 
     @Test
     @DisplayName("InsertionSort_sort_C0001_归并排序_size_100")

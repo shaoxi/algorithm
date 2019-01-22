@@ -13,7 +13,7 @@ import java.util.function.Function;
  * @author shaoxi.ycw
  * @since 2019-01-20
  */
-public class BaseSortTest {
+public class SortTestBase {
 
     /**
      * 排序，默认打印详细日志

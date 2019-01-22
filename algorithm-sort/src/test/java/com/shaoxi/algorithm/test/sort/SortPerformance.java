@@ -21,11 +21,11 @@ import java.util.function.Function;
  * @author shaoxi.ycw
  * @since 2019-01-19
  */
-public class SortPerformanceTest extends SortTestBase {
+public class SortPerformance extends SortTestBase {
     @Test
-    @DisplayName("C0001_排序性能比较_size_100000")
+    @DisplayName("C0001_排序性能比较_size_200000")
     void run(){
-        int[] testData = SortTestData.testData(10*10000);
+        int[] testData = SortTestData.testData(2*10000);
         List<SortResult> resultList = new ArrayList<>();
 
         //插入排序
