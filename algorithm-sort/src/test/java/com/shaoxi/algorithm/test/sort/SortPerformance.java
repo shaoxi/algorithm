@@ -21,7 +21,7 @@ import java.util.function.Function;
  * @author shaoxi.ycw
  * @since 2019-01-19
  */
-public class SortPerformanceTest extends BaseSortTest {
+public class SortPerformanceTest extends SortTestBase {
     @Test
     @DisplayName("C0001_排序性能比较_size_100000")
     void run(){
@@ -50,7 +50,7 @@ public class SortPerformanceTest extends BaseSortTest {
 
     private void sort(List<SortResult> resultList, String name, int[] a, Function<int[], Void> sortFunc){
         int[] _a = ArraysTool.copy(a, 0, a.length);
-        System.out.println(ZonedDateTime.now() + name + " low");
+        System.out.println(ZonedDateTime.now() + name + " start");
 
         long useTime = sort(_a, sortFunc, false);
 

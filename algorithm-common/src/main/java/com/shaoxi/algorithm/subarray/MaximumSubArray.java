@@ -24,7 +24,7 @@ public class MaximumSubArray {
 
     private static MaximumSubArrayResult findMaximumSubArray0(int[] a, int low, int high){
         //TODO 分治法实现
-        return null;
+        return new MaximumSubArrayResult(0,0,0);
     }
 
     public static class MaximumSubArrayResult{
@@ -49,6 +49,11 @@ public class MaximumSubArray {
             sb.append(", sum=").append(sum);
             sb.append('}');
             return sb.toString();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return super.equals(obj);
         }
     }
 }
