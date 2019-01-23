@@ -1,6 +1,7 @@
 package com.shaoxi.algorithm.sort;
 
-import com.shaoxi.algorithm.sort.tool.ArraysTool;
+
+import com.shaoxi.algorithm.common.tool.ArraysTool;
 
 import java.util.Arrays;
 

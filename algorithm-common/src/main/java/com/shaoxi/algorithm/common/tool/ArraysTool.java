@@ -1,4 +1,4 @@
-package com.shaoxi.algorithm.sort.tool;
+package com.shaoxi.algorithm.common.tool;
 
 /**
  *
