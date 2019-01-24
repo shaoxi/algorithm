@@ -17,9 +17,9 @@ public class InsertSort {
      *
      * @param a
      */
-    public static Void sort(int[] a){
+    public static void sort(int[] a){
         if(ArraysTool.isEmpty(a)){
-            return null;
+            return ;
         }
         for(int i=1; i<a.length; i++){
             //将a[i]插入已排序数组a[i-1]
@@ -34,6 +34,5 @@ public class InsertSort {
             }
             a[j+1] = key;
         }
-        return null;
     }
 }

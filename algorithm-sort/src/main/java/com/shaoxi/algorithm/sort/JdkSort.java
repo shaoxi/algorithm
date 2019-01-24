@@ -18,11 +18,10 @@ public class JdkSort {
      * @param a
      * @return
      */
-    public static Void sort(int[] a){
+    public static void sort(int[] a){
         if(ArraysTool.isEmpty(a)){
-            return null;
+            return ;
         }
         Arrays.sort(a);
-        return null;
     }
 }

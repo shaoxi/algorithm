@@ -16,10 +16,7 @@ public class ArraysTool {
      * @return
      */
     public static boolean isEmpty(int[] a){
-        if(a==null || a.length==0){
-            return true;
-        }
-        return false;
+        return a==null || a.length==0;
     }
 
     /**
@@ -34,6 +31,20 @@ public class ArraysTool {
         int[] dest = new int[length];
         System.arraycopy(src, start, dest, 0, length);
         return dest;
+    }
+
+    /**
+     * 交互两个i和j两个元素位置
+     *
+     * @param a
+     * @param i
+     * @param j
+     * @return
+     */
+    public static void exchange(int[] a, int i, int j){
+        int v = a[i];
+        a[i] = a[j];
+        a[j] = v;
     }
 }
 

@@ -1,10 +1,7 @@
 package com.shaoxi.algorithm.test.sort;
 
-import com.shaoxi.algorithm.sort.BubbleSort;
-import com.shaoxi.algorithm.sort.InsertSort;
-import com.shaoxi.algorithm.sort.JdkSort;
-import com.shaoxi.algorithm.sort.MergeSort;
-import com.shaoxi.algorithm.sort.tool.ArraysTool;
+import com.shaoxi.algorithm.common.tool.ArraysTool;
+import com.shaoxi.algorithm.sort.*;
 import com.shaoxi.algorithm.test.tool.SortTestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +10,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -28,14 +26,34 @@ public class SortPerformance extends SortTestBase {
         int[] testData = SortTestData.testData(2*10000);
         List<SortResult> resultList = new ArrayList<>();
 
-        //插入排序
-        sort(resultList, "InsertSort", testData, InsertSort::sort);
-        //插入排序
+
+        //归并排序
         sort(resultList, "MergeSort", testData, MergeSort::sort);
         //jdk排序
         sort(resultList, "JdkSort", testData, JdkSort::sort);
+        //堆排序
+        sort(resultList, "HeapSort", testData, HeapSort::sort);
         //冒泡排序
         sort(resultList, "BubbleSort", testData, BubbleSort::sort);
+        //插入排序
+        sort(resultList, "InsertSort", testData, InsertSort::sort);
+
+        System.out.println("============ sort use time =============");
+        printResult(resultList);
+    }
+
+    @Test
+    @DisplayName("C0002_排序性能比较_size_1000000")
+    void run2(){
+        int[] testData = SortTestData.testData(100*10000);
+        List<SortResult> resultList = new ArrayList<>();
+
+        //归并排序
+        sort(resultList, "MergeSort", testData, MergeSort::sort);
+        //jdk排序
+        sort(resultList, "JdkSort", testData, JdkSort::sort);
+        //堆排序
+        sort(resultList, "HeapSort", testData, HeapSort::sort);
 
         System.out.println("============ sort use time =============");
         printResult(resultList);
@@ -48,7 +66,7 @@ public class SortPerformance extends SortTestBase {
         }
     }
 
-    private void sort(List<SortResult> resultList, String name, int[] a, Function<int[], Void> sortFunc){
+    private void sort(List<SortResult> resultList, String name, int[] a, Consumer<int[]> sortFunc){
         int[] _a = ArraysTool.copy(a, 0, a.length);
         System.out.println(ZonedDateTime.now() + name + " start");
 

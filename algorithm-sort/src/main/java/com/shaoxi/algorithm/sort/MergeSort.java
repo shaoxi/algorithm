@@ -15,12 +15,11 @@ public class MergeSort {
      *
      * @param a
      */
-    public static Void sort(int[] a){
+    public static void sort(int[] a){
         if(ArraysTool.isEmpty(a)){
-            return null;
+            return ;
         }
         mergeSort(a, 0, a.length-1);
-        return null;
     }
 
     private static void mergeSort(int[] a, int p, int q){

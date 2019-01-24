@@ -4,6 +4,7 @@ import com.shaoxi.algorithm.test.tool.Printer;
 import com.shaoxi.algorithm.test.tool.SortTestData;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -21,7 +22,7 @@ public class SortTestBase {
      * @param sortFunc 排序函数
      * @return 耗时
      */
-    public long sort(int size, Function<int[], Void> sortFunc) {
+    public long sort(int size, Consumer<int[]> sortFunc) {
         return sort(size,sortFunc,true);
     }
 
@@ -33,7 +34,7 @@ public class SortTestBase {
      * @param printLog
      * @return
      */
-    public long sort(int size, Function<int[], Void> sortFunc, boolean printLog){
+    public long sort(int size, Consumer<int[]> sortFunc, boolean printLog){
         int[] testData = SortTestData.testData(size);
         return sort(testData, sortFunc, printLog);
     }
@@ -45,19 +46,19 @@ public class SortTestBase {
      * @param printLog
      * @return
      */
-    public long sort(int[] testData, Function<int[], Void> sortFunc, boolean printLog){
+    public long sort(int[] testData, Consumer<int[]> sortFunc, boolean printLog){
         int[] expect = SortTestData.expectData(testData);
         if(printLog){
             Printer.print("sort\tinput", testData);
         }
 
         long start = System.currentTimeMillis();
-        sortFunc.apply(testData);
+        sortFunc.accept(testData);
         long useTime = System.currentTimeMillis() - start;
 
         if(printLog){
             Printer.print("sort\tresult", testData);
-            Printer.print("expect\tresult", testData);
+            Printer.print("expect\tresult", expect);
             System.out.println("run\ttime\t"+ useTime);
         }
 

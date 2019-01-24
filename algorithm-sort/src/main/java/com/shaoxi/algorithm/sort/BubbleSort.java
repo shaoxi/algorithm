@@ -17,9 +17,9 @@ public class BubbleSort {
      * @param a
      * @return
      */
-    public static Void sort(int[] a){
+    public static void sort(int[] a){
         if(ArraysTool.isEmpty(a)){
-            return null;
+            return ;
         }
         for(int i=0; i<a.length-1;i++){
             for(int j=a.length-1; j>0; j--){
@@ -28,7 +28,6 @@ public class BubbleSort {
                 }
             }
         }
-        return null;
     }
 
     private static void exchange(int[] a, int i, int j) {
