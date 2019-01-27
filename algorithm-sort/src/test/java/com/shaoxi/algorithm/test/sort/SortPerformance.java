@@ -25,7 +25,7 @@ public class SortPerformance extends SortTestBase {
     void run(){
         int[] testData = SortTestData.testData(2*10000);
         List<SortResult> resultList = new ArrayList<>();
-
+        JdkSort.sort(testData);
 
         //归并排序
         sort(resultList, "MergeSort", testData, MergeSort::sort);
@@ -37,6 +37,11 @@ public class SortPerformance extends SortTestBase {
         sort(resultList, "BubbleSort", testData, BubbleSort::sort);
         //插入排序
         sort(resultList, "InsertSort", testData, InsertSort::sort);
+        //快排
+        sort(resultList, "QuickSort", testData, QuickSort::sort);
+        //快排随机化版本
+        sort(resultList, "QuickSort_random", testData, QuickSort::randomSort);
+
 
         System.out.println("============ sort use time =============");
         printResult(resultList);
@@ -54,6 +59,10 @@ public class SortPerformance extends SortTestBase {
         sort(resultList, "JdkSort", testData, JdkSort::sort);
         //堆排序
         sort(resultList, "HeapSort", testData, HeapSort::sort);
+        //快排
+        sort(resultList, "QuickSort", testData, QuickSort::sort);
+        //快排随机化
+        sort(resultList, "QuickSort_random", testData, QuickSort::randomSort);
 
         System.out.println("============ sort use time =============");
         printResult(resultList);
