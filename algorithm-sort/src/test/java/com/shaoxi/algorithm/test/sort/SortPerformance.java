@@ -2,7 +2,7 @@ package com.shaoxi.algorithm.test.sort;
 
 import com.shaoxi.algorithm.common.tool.ArraysTool;
 import com.shaoxi.algorithm.sort.*;
-import com.shaoxi.algorithm.test.tool.SortTestData;
+import com.shaoxi.algorithm.test.tool.TestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 /**
  * 排序性能比较
@@ -23,7 +22,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0001_排序性能比较_size_200000")
     void run(){
-        int[] testData = SortTestData.testData(2*10000);
+        int[] testData = TestData.testData(2*10000);
         List<SortResult> resultList = new ArrayList<>();
         JdkSort.sort(testData);
 
@@ -50,7 +49,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0002_排序性能比较_size_1000000")
     void run2(){
-        int[] testData = SortTestData.testData(100*10000);
+        int[] testData = TestData.testData(100*10000);
         List<SortResult> resultList = new ArrayList<>();
 
         //归并排序

@@ -1,11 +1,10 @@
 package com.shaoxi.algorithm.test.sort;
 
 import com.shaoxi.algorithm.test.tool.Printer;
-import com.shaoxi.algorithm.test.tool.SortTestData;
+import com.shaoxi.algorithm.test.tool.TestData;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 /**
  *
@@ -35,7 +34,7 @@ public class SortTestBase {
      * @return
      */
     public long sort(int size, Consumer<int[]> sortFunc, boolean printLog){
-        int[] testData = SortTestData.testData(size);
+        int[] testData = TestData.testData(size);
         return sort(testData, sortFunc, printLog);
     }
 
@@ -47,7 +46,7 @@ public class SortTestBase {
      * @return
      */
     public long sort(int[] testData, Consumer<int[]> sortFunc, boolean printLog){
-        int[] expect = SortTestData.expectData(testData);
+        int[] expect = TestData.expectData(testData);
         if(printLog){
             Printer.print("sort\tinput", testData);
         }

@@ -11,7 +11,7 @@ import java.util.Random;
  * @author shaoxi.ycw
  * @since 2019-01-19
  */
-public class SortTestData {
+public class TestData {
 
 
     public static void main(String[] args) throws IOException {
@@ -55,6 +55,35 @@ public class SortTestData {
         return b;
     }
 
+    /**
+     * 最大值
+     * @param a
+     * @return
+     */
+    public static int maxValue(int[] a){
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<a.length;i++){
+            if(a[i]>max){
+                max = a[i];
+            }
+        }
+        return max;
+    }
+
+    /**
+     * 最小值
+     * @param a
+     * @return
+     */
+    public static int minValue(int[] a){
+        int min = Integer.MAX_VALUE;
+        for(int i=0;i<a.length;i++){
+            if(a[i]<min){
+                min = a[i];
+            }
+        }
+        return min;
+    }
 
     private static void write(int[] a, FileWriter fw) throws IOException {
         for(int i=0; i< a.length; i++){
