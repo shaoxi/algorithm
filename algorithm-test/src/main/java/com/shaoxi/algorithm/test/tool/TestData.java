@@ -32,14 +32,25 @@ public class TestData {
      * @param size
      * @return
      */
-    public static int[] testData(int size){
+    public static int[] testData(int size, int min, int max){
         Random random = new Random();
         int[] data  = new int[size];
+        int range = max - min;
         for(int i=0; i<size; i++){
-            int v = random.nextInt(size);
+            int v = random.nextInt(range)+min;
             data[i] = v;
         }
         return data;
+    }
+
+    /**
+     * 随机生成排序测试数据
+     *
+     * @param size
+     * @return
+     */
+    public static int[] testData(int size){
+        return testData(size, 0, size);
     }
 
     /**

@@ -40,7 +40,8 @@ public class SortPerformance extends SortTestBase {
         sort(resultList, "QuickSort", testData, QuickSort::sort);
         //快排随机化版本
         sort(resultList, "QuickSort_random", testData, QuickSort::randomSort);
-
+        //计数排序
+        sort(resultList, "CountingSort", testData, CountingSort::sort);
 
         System.out.println("============ sort use time =============");
         printResult(resultList);
@@ -49,7 +50,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0002_排序性能比较_size_1000000")
     void run2(){
-        int[] testData = TestData.testData(100*10000);
+        int[] testData = TestData.testData(500*10000, 0, 1);
         List<SortResult> resultList = new ArrayList<>();
 
         //归并排序
@@ -62,6 +63,8 @@ public class SortPerformance extends SortTestBase {
         sort(resultList, "QuickSort", testData, QuickSort::sort);
         //快排随机化
         sort(resultList, "QuickSort_random", testData, QuickSort::randomSort);
+        //计数排序
+        sort(resultList, "CountingSort", testData, CountingSort::sort);
 
         System.out.println("============ sort use time =============");
         printResult(resultList);
@@ -77,10 +80,16 @@ public class SortPerformance extends SortTestBase {
     private void sort(List<SortResult> resultList, String name, int[] a, Consumer<int[]> sortFunc){
         int[] _a = ArraysTool.copy(a, 0, a.length);
         System.out.println(ZonedDateTime.now() + name + " start");
+        long useTime = 0;
+        String errMsg = null;
+        try{
+            useTime = sort(_a, sortFunc, false, false);
+        }catch (Throwable e){
+            errMsg = e.toString();
+        }
+        resultList.add(new SortResult(name,a.length, useTime, errMsg));
 
-        long useTime = sort(_a, sortFunc, false);
 
-        resultList.add(new SortResult(name,a.length,useTime));
         System.out.println(ZonedDateTime.now() + name+ " finish");
 
     }
@@ -89,11 +98,13 @@ public class SortPerformance extends SortTestBase {
         public String name;
         public long dataSize;
         public long useTime;
+        public String errMsg;
 
-        public SortResult(String name, long dataSize, long useTime) {
+        public SortResult(String name, long dataSize, long useTime, String errMsg) {
             this.name = name;
             this.useTime = useTime;
             this.dataSize = dataSize;
+            this.errMsg = errMsg;
         }
 
         @Override
@@ -102,16 +113,20 @@ public class SortPerformance extends SortTestBase {
             sb.append(name);
             sb.append("\t").append(dataSize);
             sb.append("\t").append(useTime);
+            sb.append("\t").append(errMsg);
             return sb.toString();
         }
 
         @Override
         public int compareTo(SortResult o) {
-             if(this.useTime > o.useTime){
-                 return 1;
-             }else if(this.useTime < o.useTime){
-                 return -1;
-             }
+            if (this.errMsg != null) {
+                return 1;
+            }
+            if (this.useTime > o.useTime) {
+                return 1;
+            } else if (this.useTime < o.useTime) {
+                return -1;
+            }
             return 0;
         }
     }

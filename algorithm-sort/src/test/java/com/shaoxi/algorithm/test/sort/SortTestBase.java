@@ -35,7 +35,7 @@ public class SortTestBase {
      */
     public long sort(int size, Consumer<int[]> sortFunc, boolean printLog){
         int[] testData = TestData.testData(size);
-        return sort(testData, sortFunc, printLog);
+        return sort(testData, sortFunc, printLog, true);
     }
 
     /**
@@ -45,7 +45,7 @@ public class SortTestBase {
      * @param printLog
      * @return
      */
-    public long sort(int[] testData, Consumer<int[]> sortFunc, boolean printLog){
+    public long sort(int[] testData, Consumer<int[]> sortFunc, boolean printLog, boolean checkResult){
         int[] expect = TestData.expectData(testData);
         if(printLog){
             Printer.print("sort\tinput", testData);
@@ -61,7 +61,9 @@ public class SortTestBase {
             System.out.println("run\ttime\t"+ useTime);
         }
 
-        Assertions.assertArrayEquals(testData, expect, "sort result is incorrect!");
+        if(checkResult){
+            Assertions.assertArrayEquals(testData, expect, "sort result is incorrect!");
+        }
         return useTime;
     }
 }

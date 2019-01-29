@@ -22,6 +22,7 @@ public class CountingSort {
             return ;
         }
 
+        //最大，最小值
         int min = a[0];
         int max = a[0];
         for(int i=1; i<a.length; i++){
@@ -33,13 +34,32 @@ public class CountingSort {
             }
         }
 
-        for(int i=0; i<a.length-1;i++){
-            for(int j=a.length-1; j>0; j--){
-                if(a[j]<a[j-1]){
-                    exchange(a, j, j-1);
-                }
-            }
+        int[] b = new int[a.length];
+        int[] c = new int[max-min+1];
+        int offset = 0 - min;
+        //初始化c
+        for(int i=0; i<c.length; i++){
+            c[i] = 0;
         }
+
+        //计数，每个数字出现的次数
+        for(int i=0;i<a.length;i++){
+            c[a[i]+offset] = c[a[i]+offset] + 1;
+        }
+
+        //统计
+        for(int i=1; i< c.length; i++){
+            c[i] = c[i]+c[i-1];
+        }
+
+        //排序b
+        for(int i=0; i< a.length; i++){
+            b[c[a[i]+offset] -1 ] = a[i];
+            c[a[i]+offset] = c[a[i]+offset] -1;
+        }
+
+        //复制会a
+        System.arraycopy(b,0,a,0,b.length);
     }
 
     private static void exchange(int[] a, int i, int j) {
