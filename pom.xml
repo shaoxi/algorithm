@@ -18,6 +18,7 @@
         <module>algorithm-subarray</module>
         <module>algorithm-common</module>
         <module>algorithm-test</module>
+        <module>algorithm-datastructure</module>
     </modules>
 
     <dependencyManagement>
