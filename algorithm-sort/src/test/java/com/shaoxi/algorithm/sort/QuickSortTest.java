@@ -1,10 +1,7 @@
-package com.shaoxi.algorithm.test.sort;
+package com.shaoxi.algorithm.sort;
 
-import com.shaoxi.algorithm.sort.QuickSort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author shaoxi.ycw

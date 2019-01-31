@@ -1,4 +1,4 @@
-package com.shaoxi.algorithm.test.sort;
+package com.shaoxi.algorithm.sort;
 
 import com.shaoxi.algorithm.test.tool.Printer;
 import com.shaoxi.algorithm.test.tool.TestData;

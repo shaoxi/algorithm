@@ -1,4 +1,4 @@
-package com.shaoxi.algorithm.test.subarray;
+package com.shaoxi.algorithm.subarray;
 
 import com.shaoxi.algorithm.subarray.MaximumSubArray;
 import org.junit.jupiter.api.Assertions;

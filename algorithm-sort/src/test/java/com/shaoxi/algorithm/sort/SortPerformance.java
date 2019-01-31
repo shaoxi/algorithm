@@ -1,7 +1,6 @@
-package com.shaoxi.algorithm.test.sort;
+package com.shaoxi.algorithm.sort;
 
 import com.shaoxi.algorithm.common.tool.ArraysTool;
-import com.shaoxi.algorithm.sort.*;
 import com.shaoxi.algorithm.test.tool.TestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +49,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0002_排序性能比较_size_1000000")
     void run2(){
-        int[] testData = TestData.testData(500*10000, 0, 1);
+        int[] testData = TestData.testData(100*10000);
         List<SortResult> resultList = new ArrayList<>();
 
         //归并排序
