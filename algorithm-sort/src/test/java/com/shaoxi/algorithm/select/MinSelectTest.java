@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 public class MinSelectTest extends SelectTestBase {
 
     @Test
-    @DisplayName("查找最小只_10")
+    @DisplayName("查找最小只_100")
     void select(){
-        int[] a = TestData.testData(10);
+        int[] a = TestData.testData(100);
         int r = select(a, MinSelect::select, true);
         JdkSort.sort(a);
         int expect = a[0];

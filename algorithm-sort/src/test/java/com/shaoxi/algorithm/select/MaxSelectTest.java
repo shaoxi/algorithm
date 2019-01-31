@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 public class MaxSelectTest extends SelectTestBase {
 
     @Test
-    @DisplayName("查找最大值_10")
+    @DisplayName("查找最大值_100")
     void select(){
-        int[] a = TestData.testData(100*10000);
+        int[] a = TestData.testData(100);
         int r = select(a, MaxSelect::select, true);
         JdkSort.sort(a);
         int expect = a[a.length-1];

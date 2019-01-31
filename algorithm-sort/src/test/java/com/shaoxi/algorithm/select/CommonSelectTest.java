@@ -15,7 +15,7 @@ public class CommonSelectTest {
     @Test
     @DisplayName("查找第i小的数_i=1_size=100")
     void select() {
-        int[] a = TestData.testData(100*10000);
+        int[] a = TestData.testData(100);
         int i = a.length / 2;
         long start = System.currentTimeMillis();
         int result = CommonSelect.select(a, i);
