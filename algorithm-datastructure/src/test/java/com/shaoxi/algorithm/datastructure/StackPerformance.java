@@ -7,7 +7,6 @@ import com.shaoxi.algorithm.test.tool.TestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -31,10 +30,10 @@ public class StackPerformance extends StackTestBase<Integer> {
             testPushAndPop(resultMap, "4 LinkedStack容量不定", TestData.testDataSortedList(size), new LinkedStack<>());
         }
         System.out.println("==================");
-        for(Map.Entry<String, PerformanceResult> entry:resultMap.entrySet()){
-            long pushAvg = entry.getValue().pushUseTime/count;
-            long popAvg = entry.getValue().popUseTime/count;
-            long totalAvg = entry.getValue().totalUseTime/count;
+        for (Map.Entry<String, PerformanceResult> entry : resultMap.entrySet()) {
+            long pushAvg = entry.getValue().pushUseTime / count;
+            long popAvg = entry.getValue().popUseTime / count;
+            long totalAvg = entry.getValue().totalUseTime / count;
             System.out.println(String.format("%s pushAvg=%d popAvg=%d totalAvg=%d", entry.getKey(), pushAvg, popAvg, totalAvg));
         }
     }
@@ -43,9 +42,9 @@ public class StackPerformance extends StackTestBase<Integer> {
         System.out.println(title);
         PerformanceResult performanceResult = test(testData, stack, false);
 
-        if(resultMap.get(title)!=null){
+        if (resultMap.get(title) != null) {
             resultMap.get(title).add(performanceResult);
-        }else{
+        } else {
             resultMap.put(title, performanceResult);
         }
     }

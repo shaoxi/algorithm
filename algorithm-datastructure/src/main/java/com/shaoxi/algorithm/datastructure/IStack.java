@@ -21,7 +21,8 @@ public interface IStack<T> {
      * 出栈
      *
      * @return 栈顶元素
-     * @throws StackUnderflowException isEmpty==true，出栈异常
+     *
+     * @throws StackUnderflowException 栈为空
      */
     T pop();
 
