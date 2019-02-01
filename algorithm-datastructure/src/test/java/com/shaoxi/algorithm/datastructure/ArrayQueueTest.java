@@ -8,29 +8,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author shaoxi.ycw
  * @version $Id: ArrayQueueTest.java, v 0.1 2019年02月01日 2:56 PM shaoxi.ycw Exp $
  */
-public class ArrayQueueTest {
+public class ArrayQueueTest extends QueueTestBase<Integer> {
     @Test
-    @DisplayName("有界队列_100_正常")
+    @DisplayName("ArrayQueue_有界队列_100_正常")
     void testNormal() {
         List<Integer> testData = TestData.testDataSortedList(100);
-        ArrayQueue<Integer> arrayQueue = new ArrayQueue<>(testData.size());
-        List<Integer> result = execute(arrayQueue, testData);
-
-        System.out.println("expect\t" + testData);
-        System.out.println("result\t" + result);
-
-        Assertions.assertArrayEquals(testData.toArray(), result.toArray());
+        test(testData, new ArrayQueue<>(testData.size()), true);
     }
 
     @Test
-    @DisplayName("有界队列_队列溢出_QueueOverflowException")
+    @DisplayName("ArrayQueue_有界队列_队列溢出_QueueOverflowException")
     void testQueueOverflowException() {
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>(1);
         Assertions.assertThrows(QueueOverflowException.class, () -> {
@@ -40,7 +33,7 @@ public class ArrayQueueTest {
     }
 
     @Test
-    @DisplayName("有界队列_队列溢出_QueueUnderflowException")
+    @DisplayName("ArrayQueue_有界队列_队列溢出_QueueUnderflowException")
     void testQueueUnderflowException() {
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>(1);
         Assertions.assertThrows(QueueUnderflowException.class, () -> {
@@ -48,19 +41,5 @@ public class ArrayQueueTest {
             arrayQueue.dequeue();
             arrayQueue.dequeue();
         });
-    }
-
-    public List<Integer> execute(IQueue<Integer> queue, List<Integer> testData) {
-        for (Integer v : testData) {
-            queue.enqueue(v);
-        }
-
-        List<Integer> result = new ArrayList<>();
-        while (!queue.isEmpty()) {
-            Integer v = queue.dequeue();
-            result.add(v);
-        }
-
-        return result;
     }
 }
