@@ -15,7 +15,7 @@ public class MinSelectTest extends SelectTestBase {
     @Test
     @DisplayName("查找最小只_100")
     void select(){
-        int[] a = TestData.testData(100);
+        int[] a = TestData.testDataArray(100);
         int r = select(a, MinSelect::select, true);
         JdkSort.sort(a);
         int expect = a[0];

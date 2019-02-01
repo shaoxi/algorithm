@@ -10,8 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;
-import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -23,7 +21,7 @@ public class ArraysToolTest {
     @Test
     @DisplayName("最大最小值")
     void findMaxMinValue(){
-        int[] a = TestData.testData(1000*10000);
+        int[] a = TestData.testDataArray(1000*10000);
         int exceptMin = test1("TestData::minValue", a, TestData::minValue);
         int exceptMax = test1("TestData::maxValue", a, TestData::maxValue);
         int max = test1("ArraysTool::findMaxValue", a, ArraysTool::findMaxValue);

@@ -21,7 +21,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0001_排序性能比较_size_200000")
     void run(){
-        int[] testData = TestData.testData(2*10000);
+        int[] testData = TestData.testDataArray(2*10000);
         List<SortResult> resultList = new ArrayList<>();
         JdkSort.sort(testData);
 
@@ -49,7 +49,7 @@ public class SortPerformance extends SortTestBase {
     @Test
     @DisplayName("C0002_排序性能比较_size_1000000")
     void run2(){
-        int[] testData = TestData.testData(100*10000);
+        int[] testData = TestData.testDataArray(100*10000);
         List<SortResult> resultList = new ArrayList<>();
 
         //归并排序

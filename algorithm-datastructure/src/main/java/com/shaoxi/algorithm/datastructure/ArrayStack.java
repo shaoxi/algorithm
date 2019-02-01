@@ -1,12 +1,12 @@
 package com.shaoxi.algorithm.datastructure;
 
 /**
- * 栈，后进先出 last in,first out LIFO
+ * 使用数组实现栈
  *
  * @author shaoxi.ycw
  * @since 2019-01-31
  */
-public class Stack<T> {
+public class ArrayStack<T> implements IStack<T> {
 
     /**
      * 最小栈容量大小
@@ -29,6 +29,11 @@ public class Stack<T> {
     private double CAPACITY_REDUCE_THRESHOLD = 0.5;
 
     /**
+     * 是否固定容量
+     */
+    private boolean isFixCapacity;
+
+    /**
      * 栈容量
      */
     private int capacity;
@@ -46,31 +51,56 @@ public class Stack<T> {
     /**
      * 栈容量默认16
      */
-    public Stack() {
+    public ArrayStack() {
         this.top = 0;
         this.capacity = MIN_CAPACITY;
         this.data = (T[]) new Object[capacity];
+        this.isFixCapacity = false;
     }
 
     /**
      * @param capacity 容量，必须大于0
      */
-    public Stack(int capacity) {
+    public ArrayStack(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("capacity illegal, capacity must be greater than 0");
         }
         this.top = 0;
         this.capacity = capacity;
         this.data = (T[]) new Object[capacity];
+        this.isFixCapacity = false;
+    }
+
+    /**
+     * @param capacity 容量，必须大于0
+     * @param isFixCapacity 容量是否固定
+     */
+    public ArrayStack(int capacity, boolean isFixCapacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("capacity illegal, capacity must be greater than 0");
+        }
+        this.top = 0;
+        this.capacity = capacity;
+        this.data = (T[]) new Object[capacity];
+        this.isFixCapacity = isFixCapacity;
     }
 
     /**
      * 入栈
      *
      * @param element
+     *
+     * @throws StackOverflowException isFixCapacity=true 且 容量达超过上限
      */
+    @Override
     public void push(T element){
-        ensureCapacity();
+        if(isFixCapacity){
+            if(top==capacity){
+                throw new StackOverflowException();
+            }
+        }else{
+            ensureCapacity();
+        }
         data[top] = element;
         top++;
     }
@@ -82,14 +112,18 @@ public class Stack<T> {
      *
      * @throws StackUnderflowException if isEmpty()==true
      */
+    @Override
     public T pop(){
         if(isEmpty()){
             throw new StackUnderflowException();
         }
 
-        T e = data[top--];
+        T e = data[--top];
+        data[top] = null;
 
-        reduceCapacity();
+        if(!isFixCapacity){
+            reduceCapacity();
+        }
 
         return e;
     }
@@ -100,6 +134,7 @@ public class Stack<T> {
      *
      * @return
      */
+    @Override
     public boolean isEmpty() {
         return top == 0;
     }

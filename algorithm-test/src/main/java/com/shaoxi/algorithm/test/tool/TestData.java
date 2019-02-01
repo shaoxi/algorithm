@@ -2,8 +2,7 @@ package com.shaoxi.algorithm.test.tool;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 排序数据生成器
@@ -16,7 +15,7 @@ public class TestData {
 
     public static void main(String[] args) throws IOException {
         int size = 1000*10000;
-        int[] data = testData(size);
+        int[] data = testDataArray(size);
         FileWriter fw = new FileWriter("case_size_"+size);
 
 
@@ -27,12 +26,12 @@ public class TestData {
     }
 
     /**
-     * 随机生成排序测试数据
+     * 随机生成测试数据
      *
      * @param size
      * @return
      */
-    public static int[] testData(int size, int min, int max){
+    public static int[] testDataArray(int size, int min, int max){
         Random random = new Random();
         int[] data  = new int[size];
         int range = max - min;
@@ -44,13 +43,54 @@ public class TestData {
     }
 
     /**
-     * 随机生成排序测试数据
+     * 随机生成测试数据
      *
      * @param size
      * @return
      */
-    public static int[] testData(int size){
-        return testData(size, 0, size);
+    public static int[] testDataArray(int size){
+        return testDataArray(size, 0, size);
+    }
+
+    /**
+     * 随机生成测试数据
+     *
+     * @param size
+     * @return
+     */
+    public static List<Integer> testDataList(int size, int min, int max){
+        return toList(testDataArray(size, min, max));
+    }
+
+
+    /**
+     * 随机生成测试数据
+     *
+     * @param size
+     * @return
+     */
+    public static List<Integer> testDataList(int size){
+        return toList(testDataArray(size, 0, size));
+    }
+
+    /**
+     * 随机生成测试数据，已排序
+     *
+     * @param size
+     * @return
+     */
+    public static List<Integer> testDataSortedList(int size){
+        List<Integer> list = toList(testDataArray(size, 0, size));
+        Collections.sort(list);
+        return list;
+    }
+
+    private static List<Integer> toList(int[] a){
+        List<Integer> list = new ArrayList<>(a.length);
+        for(int v:a){
+            list.add(v);
+        }
+        return list;
     }
 
     /**

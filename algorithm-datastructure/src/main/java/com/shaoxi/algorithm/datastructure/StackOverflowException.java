@@ -1,16 +1,16 @@
 package com.shaoxi.algorithm.datastructure;
 
 /**
- * 栈溢异常
+ * 溢出异常
  *
  * @author shaoxi.ycw
  * @since 2019-02-01
  */
-public class StackUnderflowException extends RuntimeException {
+public class StackOverflowException extends RuntimeException {
     /**
      *
      */
-    public StackUnderflowException(){
+    public StackOverflowException(){
         super();
     }
 
@@ -18,7 +18,7 @@ public class StackUnderflowException extends RuntimeException {
      *
      * @param message
      */
-    public StackUnderflowException(String message) {
+    public StackOverflowException(String message) {
         super(message);
     }
 }

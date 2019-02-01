@@ -34,7 +34,7 @@ public class SortTestBase {
      * @return
      */
     public long sort(int size, Consumer<int[]> sortFunc, boolean printLog){
-        int[] testData = TestData.testData(size);
+        int[] testData = TestData.testDataArray(size);
         return sort(testData, sortFunc, printLog, true);
     }
 
